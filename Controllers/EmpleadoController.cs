@@ -19,7 +19,7 @@ namespace WebAPICrudTest.Controllers
         }
 
         [HttpGet]
-        [Route("lista")]
+        [Route("list")]
         public async Task<IActionResult> Get()
         {
             var listaEmpleado = await dbContext.Empleados.ToListAsync();
@@ -28,17 +28,71 @@ namespace WebAPICrudTest.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create(Empleado E)
+        public async Task<IActionResult> Create([FromBody] Empleado E)
         {
             try
             {
                 // Código que podría lanzar una excepción
                 await dbContext.Empleados.AddAsync(E);
+                await dbContext.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status200OK, E);
             }
             catch (Exception ex)
             {
                 // Manejo de la excepción
-                Console.WriteLine(ex.Message);  // Muestra el mensaje de error
+                Console.WriteLine(ex.Message);  
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("Get/{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            try
+            {
+                var empleado = await dbContext.Empleados.FirstOrDefaultAsync(e => e.IdEmpleado == id);
+                return StatusCode(StatusCodes.Status200OK, empleado);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
+        }
+
+        [HttpPut]
+        [Route("Edit/{id:int}")]
+        public async Task<IActionResult> Edit([FromBody] Empleado E)
+        {
+            try
+            {
+                dbContext.Empleados.Update(E);
+                await dbContext.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status200OK, E);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        [HttpDelete]
+        [Route("Delete/{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var empleado = await dbContext.Empleados.FirstOrDefaultAsync(e => e.IdEmpleado == id);
+                dbContext.Empleados.Remove(empleado);
+                await dbContext.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status204NoContent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
     }

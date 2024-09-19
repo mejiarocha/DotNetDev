@@ -1,5 +1,84 @@
 [
   {
+    "ContainingType": "WebAPICrudTest.Controllers.EmpleadoController",
+    "Method": "Create",
+    "RelativePath": "api/Empleado/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "E",
+        "Type": "WebAPICrudTest.Models.Empleado",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPICrudTest.Controllers.EmpleadoController",
+    "Method": "Delete",
+    "RelativePath": "api/Empleado/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPICrudTest.Controllers.EmpleadoController",
+    "Method": "Edit",
+    "RelativePath": "api/Empleado/Edit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "E",
+        "Type": "WebAPICrudTest.Models.Empleado",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPICrudTest.Controllers.EmpleadoController",
+    "Method": "GetById",
+    "RelativePath": "api/Empleado/Get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPICrudTest.Controllers.EmpleadoController",
+    "Method": "Get",
+    "RelativePath": "api/Empleado/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebAPICrudTest.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

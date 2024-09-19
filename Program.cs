@@ -17,6 +17,17 @@ builder.Services.AddDbContext<DbcrudContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLChain"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("NewPolitic", app =>
+    {
+        app
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
